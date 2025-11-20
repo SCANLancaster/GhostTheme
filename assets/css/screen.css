@@ -62,8 +62,8 @@ production stylesheet in assets/built/screen.css
     --color-secondary-text: rgb(0 0 0 / 0.55);
     --color-border: rgb(0 0 0 / 0.08);
     --color-dark-border: rgb(0 0 0 / 0.55);
-    --font-sans: "freight-sans-pro", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    --font-serif: "freight-text-pro", Georgia, Times, serif;
+    --font-sans: "Freight Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-serif: "Freight Text Pro", Georgia, Times, serif;
     --font-serif-alt: Georgia, Times, serif;
     --font-mono: "JetBrains Mono", Menlo, Consolas, Monaco, "Liberation Mono", "Lucida Console", monospace;
     --container-width: 1320px;
@@ -136,8 +136,9 @@ sub, sup {
 /* ---------------------------------------------------------- */
 
 body {
-    font-family: var(--gh-font-body, var(--font-sans));
+    font-family: var(--gh-font-body, var(--font-serif));
     font-size: 1.6rem;
+    font-weight: 400;
     background-color: var(--background-color);
     color: var(--color-primary-text);
 }
@@ -450,7 +451,7 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
 .gh-navigation-logo {
     position: relative;
     font-family: var(--gh-font-heading, var(--font-sans));
-    font-size: calc(2.4rem * var(--factor, 1));
+    font-size: calc(7rem * var(--factor, 1));
     font-weight: 725;
     letter-spacing: -0.015em;
     white-space: nowrap;
@@ -474,6 +475,11 @@ body[class*=" gh-font-heading"]:not(.gh-font-heading-fira-sans):not(.gh-font-hea
     margin: 0;
     white-space: nowrap;
     list-style: none;
+}
+
+.gh-navigation .nav a {
+    font-family: var(--gh-font-heading, var(--font-sans));
+    font-weight: 700;
 }
 
 .gh-navigation .gh-more-toggle {
@@ -808,8 +814,9 @@ Search                         LOGO                    Login Subscribe
     }
 
     #gh-navigation .nav a {
+        font-family: var(--gh-font-heading, var(--font-sans));
         font-size: 1.75rem;
-        font-weight: 600;
+        font-weight: 700;
         text-transform: none;
     }
 

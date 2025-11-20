@@ -130,4 +130,78 @@
     }
 
     init();
+
+    // Add debug functions to window object
+    window.debugTagColoring = function() {
+        console.log('=== Tag Navigation Debug Info ===\n');
+
+        // Get tag color data
+        const tagDataElement = document.getElementById('tag-color-data');
+        if (!tagDataElement) {
+            console.error('❌ No tag-color-data element found');
+            return;
+        }
+
+        let tagColors;
+        try {
+            tagColors = JSON.parse(tagDataElement.textContent);
+        } catch (e) {
+            console.error('❌ Failed to parse tag color data:', e);
+            return;
+        }
+
+        console.log('📊 Available Tag Colors:', tagColors);
+        console.log('Tag Count:', Object.keys(tagColors).length);
+        console.log('');
+
+        // Find all navigation links
+        const navigationSelectors = [
+            '#gh-navigation .nav a',
+            '.gh-navigation-menu .nav a',
+            '.gh-dropdown .nav a'
+        ];
+
+        const linkInfo = [];
+
+        navigationSelectors.forEach(selector => {
+            const navLinks = document.querySelectorAll(selector);
+
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                const tagSlug = extractTagSlug(href);
+                const hasColor = tagSlug && tagColors[tagSlug];
+                const appliedColor = hasColor ? tagColors[tagSlug] : null;
+                const currentColor = link.style.color || getComputedStyle(link).color;
+
+                linkInfo.push({
+                    text: link.textContent.trim(),
+                    href: href,
+                    tagSlug: tagSlug || 'N/A',
+                    hasTagColor: !!hasColor,
+                    tagAccentColor: appliedColor || 'N/A',
+                    currentColor: currentColor,
+                    selector: selector
+                });
+            });
+        });
+
+        // Remove duplicates (same link found by multiple selectors)
+        const uniqueLinks = linkInfo.filter((link, index, self) =>
+            index === self.findIndex(l => l.href === link.href && l.text === link.text)
+        );
+
+        console.log('🔗 Navigation Links:', uniqueLinks);
+        console.log('');
+
+        // Summary
+        const coloredLinks = uniqueLinks.filter(l => l.hasTagColor).length;
+        console.log('📈 Summary:');
+        console.log({
+            totalLinks: uniqueLinks.length,
+            linksWithTagColors: coloredLinks,
+            linksWithoutTagColors: uniqueLinks.length - coloredLinks
+        });
+    };
+
+    console.log('💡 Debug function available: window.debugTagColoring()');
 })();
