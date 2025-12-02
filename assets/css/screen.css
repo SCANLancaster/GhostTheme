@@ -960,12 +960,30 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-card-tag {
-    display: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
     margin-bottom: 4px;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 500;
     letter-spacing: 0.01em;
     text-transform: uppercase;
+}
+
+.gh-card-tag-swatch {
+    display: none;
+    width: 3px;
+    height: 1.1em;
+    border-radius: 1px;
+    flex-shrink: 0;
+}
+
+.gh-card-tag-swatch[style] {
+    display: block;
+}
+
+.gh-card-tag-name {
+    color: inherit;
 }
 
 .gh-card-title {
@@ -1067,8 +1085,13 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-tag {
-    display: block;
+    display: flex;
     margin-bottom: 12px;
+    font-size: 2rem;
+}
+
+.gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-tag-swatch {
+    width: 4px;
 }
 
 .gh-header.is-magazine .gh-header-inner > .gh-card .gh-card-title {
@@ -1239,8 +1262,13 @@ Search                         LOGO                    Login Subscribe
 }
 
 .gh-header.is-highlight .gh-header-left .gh-card .gh-card-tag {
-    display: block;
+    display: flex;
     margin-bottom: 12px;
+    font-size: 2rem;
+}
+
+.gh-header.is-highlight .gh-header-left .gh-card .gh-card-tag-swatch {
+    width: 4px;
 }
 
 .gh-header.is-highlight .gh-header-left .gh-card .gh-card-title {
@@ -1287,6 +1315,10 @@ Search                         LOGO                    Login Subscribe
 .gh-header.is-highlight .gh-featured-feed {
     display: flex;
     flex-direction: column;
+}
+
+.gh-header.is-highlight .gh-featured-feed .gh-card-tag {
+    font-size: 1.2rem;
 }
 
 .gh-header.is-highlight .gh-featured-feed .gh-card-title {

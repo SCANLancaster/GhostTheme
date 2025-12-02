@@ -18,7 +18,10 @@
         {{/if}}
         <div class="gh-card-wrapper">
             {{#if primary_tag}}
-                <p class="gh-card-tag">{{primary_tag.name}}</p>
+                <p class="gh-card-tag">
+                    <span class="gh-card-tag-swatch" {{#if primary_tag.accent_color}}style="background-color: {{primary_tag.accent_color}}"{{/if}}></span>
+                    <span class="gh-card-tag-name" {{#if primary_tag.accent_color}}style="color: {{primary_tag.accent_color}}"{{/if}}>{{primary_tag.name}}</span>
+                </p>
             {{/if}}
             <h3 class="gh-card-title is-title">{{title}}</h3>
             {{#if custom_excerpt}}
